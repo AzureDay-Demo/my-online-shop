@@ -1,0 +1,32 @@
+﻿@model MyOnlineShop.Web.Models.CategoryListModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>My Online Shop</h1>
+</div>
+
+<div>
+	@foreach (var category in Model.Categories.OrderBy(i => i.Title))
+	{
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					@category.Title
+				</div>
+				<div class="panel-body">
+					<ul class="list-group">
+						@foreach (var good in category.Goods.OrderBy(i => i.Title))
+						{
+							<li class="list-group-item">@good.Title</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+<div class="clearfix"></div>
